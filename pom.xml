@@ -47,5 +47,6 @@
 
 	<modules>
 		<module>springcloud-model</module>
+		<module>springcloud-api</module>
 	</modules>
 </project>
