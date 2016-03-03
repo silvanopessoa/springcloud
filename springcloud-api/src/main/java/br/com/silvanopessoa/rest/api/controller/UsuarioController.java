@@ -21,6 +21,7 @@ import static org.springframework.http.MediaType.APPLICATION_XML_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
 import javax.annotation.security.RolesAllowed;
 
@@ -79,6 +80,7 @@ public class UsuarioController {
      * @see Spec - http://restpatterns.org/HTTP_Methods/PUT
      * @see ROLE - UserDetailsServiceImpl
      */
+    @RequestMapping(method=PUT, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public ResponseEntity<Void> updateUsuario(@PathVariable("login") String login, @RequestBody String usuario){
         LOGGER.info("PUT USUARIO | Iniciado | Alterar usuário. Usuário:{}, Entity:{}",usuario,login);
         LOGGER.info("PUT USUARIO | Concluido | Alterar usuário. Usuário:{}, Entity:{}",usuario,login);
@@ -117,9 +119,9 @@ public class UsuarioController {
      */
 	@RequestMapping(value = "/{login}",method = GET, produces = { APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE })
     public ResponseEntity<String> getUsuario(@PathVariable("login") String login, @RequestHeader(value = IF_MODIFIED_SINCE, required = false) String dataAlteracao) {
-		LOGGER.debug("GET USUARIO | Iniciado | Obtem o usuário. {}");
-        LOGGER.debug("GET USUARIO | Identificador | Obtem o usuário. Identicador do usuário: {}, data alteracao: {}",login,dataAlteracao);
-        LOGGER.debug("GET USUARIO | Concluído | Obtem o usuário. Identicador do usuário: {}, data alteracao: {}",login,dataAlteracao);
+		LOGGER.info("GET USUARIO | Iniciado | Obtem o usuário. {}");
+        LOGGER.info("GET USUARIO | Identificador | Obtem o usuário. Identicador do usuário: {}, data alteracao: {}",login,dataAlteracao);
+        LOGGER.info("GET USUARIO | Concluído | Obtem o usuário. Identicador do usuário: {}, data alteracao: {}",login,dataAlteracao);
         return new ResponseEntity<>(OK);
     }
 
